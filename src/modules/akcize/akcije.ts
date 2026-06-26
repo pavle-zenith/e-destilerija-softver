@@ -3,14 +3,13 @@
 /**
  * Akcizne akcije: obračun perioda (upsert u akciza_obracun) i označavanje plaćanja.
  */
-import { and, desc, gte, lte, sql } from "drizzle-orm";
-import { eq } from "drizzle-orm";
+import { and, desc, eq, gte, isNotNull, lte, sql } from "drizzle-orm";
 import { revalidatePath } from "next/cache";
 import { db } from "@/db";
 import { akcizaObracun } from "@/db/schema/akcize";
-import { akcizaStopa, podesavanja } from "@/db/schema/sifarnici";
-import { prodaja, prodajaStavke } from "@/db/schema/prodaja";
-import { granicePerioda, obracunajAkcizu, rokPlacanja } from "@/lib/akciza";
+import { akcizaStopa } from "@/db/schema/sifarnici";
+import { punjenje } from "@/db/schema/magacin";
+import { granicePerioda, obracunajAkcizu, rokPolumesecni } from "@/lib/akciza";
 
 const iso = (d: Date) => d.toISOString().slice(0, 10);
 
@@ -21,15 +20,21 @@ export async function obracunajPeriod(godina: number, mesec: number, deo: 1 | 2)
     const odIso = iso(per.od);
     const doIso = iso(per.do);
 
-    // Zbir čistog alkohola iz prodaje u periodu.
+    // Zbir čistog alkohola iz PUNJENJA (flaširanja) u periodu — osnov akcize.
     const [zbir] = await db
-      .select({ litara: sql<string>`coalesce(sum(${prodajaStavke.cistAlkoholL}), 0)` })
-      .from(prodajaStavke)
-      .innerJoin(prodaja, eq(prodaja.id, prodajaStavke.prodajaId))
-      .where(and(gte(prodaja.datum, odIso), lte(prodaja.datum, doIso)));
+      .select({ litara: sql<string>`coalesce(sum(${punjenje.cistAlkoholL}), 0)` })
+      .from(punjenje)
+      .where(
+        and(
+          isNotNull(punjenje.proizvodId),
+          isNotNull(punjenje.cistAlkoholL),
+          gte(punjenje.datum, odIso),
+          lte(punjenje.datum, doIso),
+        ),
+      );
     const litara = Number(zbir?.litara ?? 0);
 
-    // Važeća stopa i rok.
+    // Važeća stopa i rok (polumesečni rok po praksi).
     const [stopaRed] = await db
       .select({ stopa: akcizaStopa.rsdPoLitruCistogAlkohola })
       .from(akcizaStopa)
@@ -38,8 +43,7 @@ export async function obracunajPeriod(godina: number, mesec: number, deo: 1 | 2)
       .limit(1);
     const stopa = Number(stopaRed?.stopa ?? 0);
     const iznos = obracunajAkcizu(litara, stopa);
-    const [pod] = await db.select().from(podesavanja).limit(1);
-    const rok = iso(rokPlacanja(per.do, pod?.akcizaRokDana ?? 15));
+    const rok = iso(rokPolumesecni(per));
 
     await db
       .insert(akcizaObracun)

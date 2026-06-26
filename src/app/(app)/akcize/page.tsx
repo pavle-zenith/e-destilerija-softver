@@ -14,7 +14,7 @@ export default async function AkcizeStranica() {
 
   return (
     <div>
-      <PageHeader naslov={sr.nav.akcize} opis="Polumesečni obračun akcize iz prodaje (1–15 i 16–kraj)" />
+      <PageHeader naslov={sr.nav.akcize} opis="Polumesečni obračun akcize iz punjenja (1–15 i 16–kraj)" />
 
       <div className="overflow-x-auto rounded-2xl border border-neutral-200 bg-white">
         {periodi.length === 0 ? (

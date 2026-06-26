@@ -156,6 +156,14 @@ export function PunjenjeForma({
             ) : null}
             {ukupnoL > 0 ? <p className="mt-1 text-xs text-neutral-500">≈ {litara(ukupnoL)}</p> : null}
           </div>
+          <div>
+            <label className="mb-1 block text-sm font-medium text-neutral-700">{sr.punjenje.amOd}</label>
+            <input name="amOd" placeholder="npr. AC0061568" className={inputKlase} />
+          </div>
+          <div>
+            <label className="mb-1 block text-sm font-medium text-neutral-700">{sr.punjenje.amDo}</label>
+            <input name="amDo" placeholder="npr. AC0061687" className={inputKlase} />
+          </div>
         </div>
       )}
 

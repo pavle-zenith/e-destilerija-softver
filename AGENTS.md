@@ -49,7 +49,9 @@ Tajne idu u `.env.local` (vidi `.env.example`). Bez `DATABASE_URL` baza ne radi.
 - Stopa je **podesiva** (`akciza_stopa`, verzionisana po `vazi_od`) — nikad hard-kodovana
   (~57.570 RSD/hl čistog alkohola u 2025, država je menja godišnje).
 - Obračunski period je **polumesečni**: deo 1 = 1.–15., deo 2 = 16.–kraj meseca.
-- Rok plaćanja = kraj perioda + `akcizaRokDana` (podrazumevano 15). Obrazac **PP-OA**.
+- **Akciza se obračunava pri PUNJENJU (flaširanju), ne pri prodaji** — svaki događaj punjenja u boce nosi akcizne markice (`amOd`/`amDo`) i osnov je `cistAlkoholL = litara × jačina lota/100`. Obračun agregira `punjenje` (gde je `proizvodId` postavljen) po periodu.
+- Rok plaćanja (po praksi): deo 1 → poslednji dan istog meseca; deo 2 → 15. sledećeg meseca (`rokPolumesecni` u `src/lib/akciza.ts`). Obrazac **PP-OA**.
+- **LOT (`destilati.oznaka`) je jedinstven** (UNIQUE) — ne može se dva puta uneti ista oznaka.
 
 ## Konvencije
 - Drizzle `numeric` vraća **string** — koristi formatере iz `src/i18n/format.ts` za prikaz.

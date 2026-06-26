@@ -10,6 +10,7 @@
 import { eq } from "drizzle-orm";
 import { revalidatePath } from "next/cache";
 import { db } from "@/db";
+import { sr } from "@/i18n/sr";
 import { ENTITETI, jeEntitetKljuc } from "./entiteti";
 import { zodZaEntitet, type StanjeForme } from "./tipovi";
 import { TABELE, IZRACUNAJ } from "./registar";
@@ -59,7 +60,10 @@ export async function sacuvaj(
     }
   } catch (e) {
     console.error("Greška pri čuvanju entiteta", kljuc, e);
-    return { ok: false, poruka: "Greška pri čuvanju. Pokušajte ponovo." };
+    if ((e as { code?: string })?.code === "23505") {
+      return { ok: false, poruka: sr.forma.vecPostoji };
+    }
+    return { ok: false, poruka: sr.forma.greskaCuvanja };
   }
 
   revalidatePath(`${meta.osnovnaPutanja}/${kljuc}`);

@@ -305,6 +305,9 @@ export const sr = {
     izaberiDestilat: "— Izaberi destilat —",
     izaberiSud: "— Izaberi sud —",
     izaberiProizvod: "— Izaberi proizvod —",
+    amOd: "Markice od",
+    amDo: "Markice do",
+    markice: "Akcizne markice",
   },
 
   sledljivostUI: {
@@ -316,6 +319,8 @@ export const sr = {
     nalepnice: "QR nalepnice",
     odstampaj: "Odštampaj",
     skenirajte: "Skenirajte za istoriju lota",
+    bezLotova: "Nema destilata. Dodajte ih u Proizvodnja → Destilati (ili egalizacijom).",
+    bezSudova: "Nema sudova. Dodajte ih u Proizvodnja → Sudovi.",
   },
 
   koraci: {
@@ -333,6 +338,7 @@ export const sr = {
     neispravanBroj: "Unesite ispravan broj",
     neispravanDatum: "Unesite ispravan datum",
     greskaCuvanja: "Greška pri čuvanju. Pokušajte ponovo.",
+    vecPostoji: "Već postoji zapis sa tom vrednošću (npr. LOT/oznaka mora biti jedinstven).",
     potvrdaBrisanja: "Da li sigurno želite da obrišete ovu stavku?",
     potvrdaStorna: "Stornirati ovaj zapis? Nuspojave (zalihe/akciza) se vraćaju.",
     da: "Da",

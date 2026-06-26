@@ -49,7 +49,7 @@ export default async function SledljivostStranica() {
           {sr.koraci.destilat} / lot
         </p>
         {lotovi.length === 0 ? (
-          <p className="text-sm text-neutral-400">{sr.forma.nemaUnosa}</p>
+          <p className="text-sm text-neutral-400">{sr.sledljivostUI.bezLotova}</p>
         ) : (
           <PretragaLota lotovi={lotovi} />
         )}
@@ -60,7 +60,7 @@ export default async function SledljivostStranica() {
       </h2>
       {lista.length === 0 ? (
         <div className="rounded-2xl border border-dashed border-neutral-300 bg-white py-16 text-center text-sm text-neutral-400">
-          {sr.forma.nemaUnosa}
+          {sr.sledljivostUI.bezSudova}
         </div>
       ) : (
         <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">

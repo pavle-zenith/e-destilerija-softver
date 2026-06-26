@@ -57,6 +57,20 @@ export function rokPlacanja(periodDo: Date, rokDana = 15): Date {
   return rok;
 }
 
+/**
+ * Rok plaćanja po praksi (prema zvaničnoj evidenciji):
+ *  - deo 1 (1.–15.) → poslednji dan istog meseca,
+ *  - deo 2 (16.–kraj) → 15. sledećeg meseca.
+ */
+export function rokPolumesecni(p: Period): Date {
+  if (p.deo === 1) {
+    // Dan 0 sledećeg meseca = poslednji dan tekućeg meseca.
+    return new Date(Date.UTC(p.godina, p.mesec, 0));
+  }
+  // 15. sledećeg meseca (mesec je 1-baziran, pa je `mesec` indeks sledećeg).
+  return new Date(Date.UTC(p.godina, p.mesec, 15));
+}
+
 /** Da li je rok prošao u odnosu na referentni datum (podrazumevano danas). */
 export function rokIstekao(rok: Date, danas: Date): boolean {
   return rok.getTime() < danas.getTime();

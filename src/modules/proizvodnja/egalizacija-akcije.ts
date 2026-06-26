@@ -81,6 +81,9 @@ export async function sacuvajEgalizaciju(
     });
   } catch (e) {
     console.error("Greška pri egalizaciji", e);
+    if ((e as { code?: string })?.code === "23505") {
+      return { ok: false, greske: { oznaka: sr.forma.vecPostoji } };
+    }
     return { ok: false, poruka: sr.forma.greskaCuvanja };
   }
 

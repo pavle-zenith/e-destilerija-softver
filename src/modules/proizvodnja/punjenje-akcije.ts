@@ -11,6 +11,7 @@ import { revalidatePath } from "next/cache";
 import { db } from "@/db";
 import { punjenje, sudovi, magacinPromet } from "@/db/schema/magacin";
 import { proizvodi } from "@/db/schema/sifarnici";
+import { destilati } from "@/db/schema/proizvodnja";
 import { sr } from "@/i18n/sr";
 import type { StanjeForme } from "@/modules/crud/tipovi";
 
@@ -26,6 +27,8 @@ export async function sacuvajPunjenje(
   const proizvodId = String(formData.get("proizvodId") ?? "").trim();
   const kolicinaUnos = String(formData.get("kolicinaL") ?? "").replace(",", ".").trim();
   const brojJedinicaUnos = String(formData.get("brojJedinica") ?? "").trim();
+  const amOd = String(formData.get("amOd") ?? "").trim() || null;
+  const amDo = String(formData.get("amDo") ?? "").trim() || null;
 
   const greske: Record<string, string> = {};
   if (!destilatId) greske.destilatId = sr.forma.obavezno;
@@ -74,11 +77,29 @@ export async function sacuvajPunjenje(
           .select({ zapreminaL: proizvodi.zapreminaL })
           .from(proizvodi)
           .where(eq(proizvodi.id, proizvodId));
-        const ukupnoL = (brojJedinica * Number(proiz?.zapreminaL ?? 0)).toFixed(3);
+        const ukupnoL = brojJedinica * Number(proiz?.zapreminaL ?? 0);
+        // Jačina lota → osnov akcize: čist alkohol = napunjeni litri × jačina/100.
+        const [dest] = await tx
+          .select({ jacina: destilati.jacina })
+          .from(destilati)
+          .where(eq(destilati.id, destilatId));
+        const jacina = Number(dest?.jacina ?? 0);
+        const cist = (ukupnoL * jacina) / 100;
 
         const [p] = await tx
           .insert(punjenje)
-          .values({ destilatId, proizvodId, kolicinaL: ukupnoL, brojJedinica, datum, napomena })
+          .values({
+            destilatId,
+            proizvodId,
+            kolicinaL: ukupnoL.toFixed(3),
+            brojJedinica,
+            jacina: jacina.toFixed(2),
+            cistAlkoholL: cist.toFixed(3),
+            amOd,
+            amDo,
+            datum,
+            napomena,
+          })
           .returning({ id: punjenje.id });
 
         await tx.insert(magacinPromet).values({

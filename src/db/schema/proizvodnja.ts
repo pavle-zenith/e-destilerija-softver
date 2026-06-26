@@ -33,7 +33,8 @@ export const proizvodnePartije = pgTable("proizvodne_partije", {
 /** Destilat (lot gotovog destilata, polazna tačka za egalizaciju/punjenje). */
 export const destilati = pgTable("destilati", {
   id: uuid("id").primaryKey().defaultRandom(),
-  oznaka: text("oznaka").notNull(),
+  /** LOT — mora biti jedinstven (ne sme se dva puta uneti ista oznaka). */
+  oznaka: text("oznaka").notNull().unique(),
   partijaId: uuid("partija_id").references(() => proizvodnePartije.id),
   vrstaRakijeId: uuid("vrsta_rakije_id").references(() => vrsteRakije.id),
   kolicinaL: numeric("kolicina_l", { precision: 12, scale: 3 }).notNull(),

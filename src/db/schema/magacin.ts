@@ -38,6 +38,14 @@ export const punjenje = pgTable("punjenje", {
   kolicinaL: numeric("kolicina_l", { precision: 12, scale: 3 }),
   /** Broj napunjenih jedinica (boca), ako je punjenje u proizvod. */
   brojJedinica: integer("broj_jedinica"),
+  /** Snapshot jačine lota (% vol) — osnov za akcizu (samo flaširanje). */
+  jacina: numeric("jacina", { precision: 5, scale: 2 }),
+  /** Čist alkohol (L) napunjen u boce = kolicinaL × jacina/100 — osnov za obračun akcize. */
+  cistAlkoholL: numeric("cist_alkohol_l", { precision: 12, scale: 3 }),
+  /** Akcizne markice (banderole) — početak opsega, npr. "AC0061568". */
+  amOd: text("am_od"),
+  /** Akcizne markice — kraj opsega, npr. "AC0061687". */
+  amDo: text("am_do"),
   datum: date("datum"),
   napomena: text("napomena"),
   ...timestamps,
