@@ -202,6 +202,129 @@ export const sr = {
     balon: "Balon",
   },
 
+  // Faza 5 — Dashboard
+  pregledUI: {
+    opis: "Brzi pregled stanja destilerije",
+    aktivnePartije: "Aktivne partije",
+    bocaNaStanju: "Boca na stanju",
+    akcizaPeriod: "Akciza — tekući period",
+    novaObavestenja: "Nova obaveštenja",
+    prodajaPoMesecima: "Čist alkohol u prodaji po mesecima (L)",
+    nemaProdaje: "Još nema prodaje za prikaz.",
+  },
+
+  obavestenjaUI: {
+    opis: "Podsetnici za rokove akcize i niske zalihe (generiše dnevni cron)",
+    bezObavestenja: "Nema obaveštenja.",
+    oznaciReseno: "Reši",
+    tip: {
+      akciza_rok: "Rok akcize",
+      niske_zalihe: "Niske zalihe",
+      sistem: "Sistem",
+    },
+    status: {
+      novo: "Novo",
+      procitano: "Pročitano",
+      reseno: "Rešeno",
+    },
+  },
+
+  // Faza 4 — Prodaja
+  prodajaUI: {
+    opis: "Izlazni računi — stavke sa lotom; umanjuje zalihe i ulazi u obračun akcize",
+    broj: "Broj računa",
+    kupac: "Kupac",
+    stavke: "Stavke",
+    dodajStavku: "Dodaj stavku",
+    bezStavki: "Dodajte bar jednu stavku sa proizvodom i količinom",
+    izaberiKupca: "— Izaberi kupca —",
+    izaberiProizvod: "— Proizvod —",
+    izaberiLot: "— Lot —",
+    brojBoca: "Boca",
+    cena: "Cena/kom",
+    ukupnoCist: "Čist alkohol",
+    ukupnoAkciza: "Procenjena akciza",
+    ukupnoIznos: "Iznos (bez akcize)",
+  },
+
+  akcizeUI: {
+    obracunaj: "Obračunaj period",
+    oznaciPlaceno: "Označi kao plaćeno",
+    nemaObracuna: "Još nema obračuna. Periodi sa prodajom su dole.",
+    periodi: "Periodi sa prodajom",
+    obracuni: "Obračuni",
+    dospelo: "Dospelo za plaćanje",
+    period: "Period",
+    litaraCistog: "Litara čistog",
+    stopa: "Stopa",
+    nemaStope: "Nije podešena akcizna stopa za ovaj period",
+    ppOaNaslov: "PP-OA — obračun akcize",
+  },
+
+  // Faza 3 — Magacin
+  magacin: {
+    opis: "Stanje zaliha — gotovi proizvodi (boce) i rinfuz u sudovima",
+    boce: "Gotovi proizvodi (boce)",
+    rinfuz: "Rinfuz (sudovi)",
+    naStanju: "Na stanju",
+    komada: "kom.",
+    prag: "Prag",
+    status: "Status",
+    kapacitet: "Kapacitet",
+    popunjenost: "Popunjenost",
+    dovoljno: "Dovoljno",
+    nemaNaStanju: "Nema na stanju",
+    bezSudova: "Još nema sudova sa zalihama.",
+    bezProizvoda: "Još nema proizvoda na stanju.",
+  },
+
+  egalizacija: {
+    naslov: "Egalizacija",
+    opis: "Mešanje više destilata u jedan novi lot",
+    oznakaPolja: "Oznaka egalizacije",
+    ulazi: "Ulazni destilati",
+    dodajUlaz: "Dodaj destilat",
+    bezUlaza: "Dodajte bar jedan ulazni destilat sa količinom",
+    rezultat: "Rezultujući destilat",
+    ukupnoL: "Ukupno",
+    procenjenaJacina: "Procenjena jačina",
+    brojUlaza: "Ulaza",
+    izaberiDestilat: "— Izaberi destilat —",
+  },
+
+  punjenje: {
+    naslov: "Punjenje",
+    opis: "Punjenje destilata u sud (rinfuz) ili u boce (proizvod)",
+    nacin: "Način punjenja",
+    uSud: "U sud (rinfuz)",
+    uBoce: "U boce (proizvod)",
+    brojBoca: "Broj boca",
+    izaberiDestilat: "— Izaberi destilat —",
+    izaberiSud: "— Izaberi sud —",
+    izaberiProizvod: "— Izaberi proizvod —",
+  },
+
+  sledljivostUI: {
+    opis: "Skenirajte QR kod suda ili izaberite sud da vidite ceo lanac",
+    izaberiSud: "Izaberite sud",
+    otvoriLanac: "Otvori lanac",
+    lanac: "Lanac sledljivosti",
+    nemaLanca: "Nema podataka za ovaj kod",
+    nalepnice: "QR nalepnice",
+    odstampaj: "Odštampaj",
+    skenirajte: "Skenirajte za istoriju lota",
+  },
+
+  koraci: {
+    sirovina: "Sirovina",
+    partija: "Proizvodna partija",
+    destilat: "Destilat",
+    egalizacija: "Egalizacija",
+    punjenje: "Punjenje",
+    sud: "Sud",
+    prodaja: "Prodaja",
+  },
+
   forma: {
     obavezno: "Obavezno polje",
     neispravanBroj: "Unesite ispravan broj",

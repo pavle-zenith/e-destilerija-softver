@@ -42,7 +42,7 @@ export function Sidebar() {
   const putanja = usePathname();
 
   return (
-    <aside className="sticky top-0 hidden h-screen w-60 shrink-0 flex-col border-r border-neutral-200 bg-white px-3 py-5 md:flex">
+    <aside className="sticky top-0 hidden h-screen w-60 shrink-0 flex-col border-r border-neutral-200 bg-white px-3 py-5 md:flex print:hidden">
       <div className="px-3 pb-6">
         <p className="text-lg font-bold text-amber-900">{sr.app.naziv}</p>
         <p className="text-xs text-neutral-500">{sr.app.opis}</p>

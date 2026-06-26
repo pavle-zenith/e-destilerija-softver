@@ -1,6 +1,7 @@
 import { pgTable, uuid, text, numeric, date } from "drizzle-orm/pg-core";
 import { timestamps } from "./_shared";
 import { kupci, proizvodi } from "./sifarnici";
+import { destilati } from "./proizvodnja";
 
 /** Prodaja (izlazni dokument). Okida umanjenje zaliha i obračun akcize. */
 export const prodaja = pgTable("prodaja", {
@@ -23,6 +24,10 @@ export const prodajaStavke = pgTable("prodaja_stavke", {
   proizvodId: uuid("proizvod_id")
     .references(() => proizvodi.id)
     .notNull(),
+  /** Lot (oznaka destilata) — kičma sledljivosti prodate flaše (kao u dosadašnjoj evidenciji). */
+  lot: text("lot"),
+  /** Veza na destilat-lot, ako je poznat — omogućava pun lanac: prodaja → destilat → partija → sirovina. */
+  destilatId: uuid("destilat_id").references(() => destilati.id),
   /** Broj prodatih jedinica (boca). */
   kolicina: numeric("kolicina", { precision: 12, scale: 3 }).notNull(),
   /** Snapshot zapremine pakovanja (L) u trenutku prodaje. */

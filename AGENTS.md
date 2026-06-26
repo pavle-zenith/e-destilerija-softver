@@ -60,13 +60,14 @@ Tajne idu u `.env.local` (vidi `.env.example`). Bez `DATABASE_URL` baza ne radi.
   - `registar.ts` (`server-only`) — `TABELE` (Drizzle), `IZVORI_OPCIJA` (FK liste + kolona labele), `IZRACUNAJ` (izvedena polja: npr. `cistAlkoholL`, `qrKod`).
   - `akcije.ts` generičke `sacuvaj`/`obrisi`; `podaci.ts` `ucitajListu`/`ucitajOpcije`; `forma.tsx`/`tabela.tsx` generički UI.
   - Nov entitet = unos u `ENTITETI` + `TABELE` (+ `IZVORI_OPCIJA`/`IZRACUNAJ` po potrebi); dinamička ruta `/<sekcija>/[param]` + index sa `entitetiZaPutanju()` rade automatski.
+- **Tokovi van CRUD-a** (egalizacija, punjenje) su dedikovane statične rute (`/proizvodnja/egalizacija`, `/proizvodnja/punjenje`) — statičan segment ima prednost nad dinamičkim `[entitet]`. Upisi koji diraju više tabela idu kroz `db.transaction(...)`. Reset forme posle uspeha radi se u wrap-ovanoj akciji (ne u `useEffect` — ESLint `set-state-in-effect`).
 
 ## Status faza
 - [x] **Faza 0 — Temelj:** skeleton, šema, i18n, app shell, PWA, domenska logika, cron stub.
 - [x] **Faza 1 — Šifarnici:** descriptor-driven CRUD (proizvodi, kupci, dobavljači, vrste rakije, sredstva, akcizna stopa) + singleton podešavanja.
-- [ ] **Faza 2 — Proizvodnja & Sledljivost:** partije, egalizacija, punjenje, istorija lota, QR nalepnice.
-- [ ] **Faza 3 — Magacin:** stanje iz prometa, alarmi za niske zalihe.
-- [ ] **Faza 4 — Prodaja & Akcize:** prodaja → zalihe → obračun akcize → podsetnici (cron).
-- [ ] **Faza 5 — Dashboard & Izveštaji:** KPI, grafikoni, izvoz (PDF/Excel).
+- [x] **Faza 2 — Proizvodnja & Sledljivost:** CRUD (sirovine, partije, destilati, sudovi) preko `crud` engine-a; egalizacija (transakcija → novi destilat) i punjenje (sud/boce + `magacin_promet`) kao dedikovani tokovi; sklapanje lanca u `src/modules/sledljivost/lanac.ts`, stranica `/sledljivost/qr/[kod]`; QR nalepnice (`qrcode`, print).
+- [x] **Faza 3 — Magacin:** stanje boca iz `magacin_promet` (ulaz − izlaz) + rinfuz iz `sudovi.trenutnaKolicinaL`; alarmi niskih zaliha prema `pragNiskihZaliha` (`src/modules/magacin/stanje.ts`, `/magacin`).
+- [x] **Faza 4 — Prodaja & Akcize:** prodaja (račun+stavke, lot+`destilatId`, snapshot jačine/cist alkohol, izlaz u `magacin_promet`); polumesečni obračun akcize (`src/modules/akcize`, `/akcize`) + PP-OA pregled (štampa); cron podsetnici za dospele akcize i niske zalihe (`/api/cron/podsetnici`, dedup, `CRON_SECRET`); `/obavestenja`. NAPOMENA: jačine SKU-ova su placeholder 40% (proveriti); akcizni PP-OA format se fino podešava kad stigne zvanični templejt.
+- [~] **Faza 5 — Dashboard & Izveštaji:** Dashboard sa živim KPI (aktivne partije, boce na stanju, akciza tekući period, nova obaveštenja) + stubičasti grafikon prodaje po mesecima (`src/modules/dashboard`, `/`). PREOSTAJE: izveštaji + izvoz (PDF/Excel) — rade se kad stignu zvanični templejti.
 
 > Ažuriraj status i konvencije ovde na kraju svake faze.
