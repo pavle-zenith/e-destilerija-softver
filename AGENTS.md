@@ -60,6 +60,8 @@ Tajne idu u `.env.local` (vidi `.env.example`). Bez `DATABASE_URL` baza ne radi.
   - `registar.ts` (`server-only`) — `TABELE` (Drizzle), `IZVORI_OPCIJA` (FK liste + kolona labele), `IZRACUNAJ` (izvedena polja: npr. `cistAlkoholL`, `qrKod`).
   - `akcije.ts` generičke `sacuvaj`/`obrisi`; `podaci.ts` `ucitajListu`/`ucitajOpcije`; `forma.tsx`/`tabela.tsx` generički UI.
   - Nov entitet = unos u `ENTITETI` + `TABELE` (+ `IZVORI_OPCIJA`/`IZRACUNAJ` po potrebi); dinamička ruta `/<sekcija>/[param]` + index sa `entitetiZaPutanju()` rade automatski.
+- **Prijava (jedan nalog):** zaštićeni deo je u route-grupi `src/app/(app)/` (shell sa sidebar-om); root layout je prazan. `src/middleware.ts` štiti sve sem `/prijava`, `/api/cron` i statike — bez važeće sesije → `/prijava`. Sesija = potpisani HMAC kolačić (`src/lib/sesija.ts`), traje 90 dana („zapamti me"). Env: `APP_LOZINKA` (lozinka) + `SESIJA_TAJNA` (potpis). Odjava je u sidebar-u.
+- **Storno** transakcionih tokova (prodaja/egalizacija/punjenje) vraća nuspojave (zalihe, količina suda); „izmena" = storno + ponovni unos. Sledljivost ima i lanac po lotu (`/sledljivost/lot/[oznaka]`) uz lanac po sudu (`/sledljivost/qr/[kod]`).
 - **Tokovi van CRUD-a** (egalizacija, punjenje) su dedikovane statične rute (`/proizvodnja/egalizacija`, `/proizvodnja/punjenje`) — statičan segment ima prednost nad dinamičkim `[entitet]`. Upisi koji diraju više tabela idu kroz `db.transaction(...)`. Reset forme posle uspeha radi se u wrap-ovanoj akciji (ne u `useEffect` — ESLint `set-state-in-effect`).
 
 ## Status faza

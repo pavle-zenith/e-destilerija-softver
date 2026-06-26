@@ -32,10 +32,10 @@ export function LanacPrikaz({ lanac }: { lanac: Lanac }) {
             {!poslednji ? (
               <span className="absolute left-5 top-10 h-full w-px bg-neutral-200" aria-hidden />
             ) : null}
-            <div className="z-10 flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-amber-200 bg-amber-50">
-              <Ikona className="h-5 w-5 text-amber-700" />
+            <div className="z-10 flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-indigo-200 bg-indigo-50">
+              <Ikona className="h-5 w-5 text-indigo-600" />
             </div>
-            <div className="flex-1 rounded-xl border border-neutral-200 bg-white p-4">
+            <div className="flex-1 rounded-2xl border border-neutral-200 bg-white p-4">
               <div className="flex items-center justify-between gap-2">
                 <p className="font-semibold text-neutral-900">{korak.naslov}</p>
                 {korak.datum ? <span className="text-xs text-neutral-400">{fmtDatum(korak.datum)}</span> : null}

@@ -5,7 +5,7 @@
  * U transakciji: izračuna ukupnu količinu i ponderisanu jačinu, kreira novi destilat,
  * upiše događaj egalizacije i sve ulaze.
  */
-import { inArray } from "drizzle-orm";
+import { eq, inArray } from "drizzle-orm";
 import { revalidatePath } from "next/cache";
 import { db } from "@/db";
 import { destilati, egalizacija, egalizacijaUlazi } from "@/db/schema/proizvodnja";
@@ -87,4 +87,28 @@ export async function sacuvajEgalizaciju(
   revalidatePath("/proizvodnja/egalizacija");
   revalidatePath("/proizvodnja/destilati");
   return { ok: true };
+}
+
+/**
+ * Storno egalizacije: briše događaj i ulaze; rezultujući destilat briše ako nije
+ * u upotrebi (u sudu/punjenju/prodaji) — inače ostaje kao lot.
+ */
+export async function stornirajEgalizaciju(id: string): Promise<void> {
+  try {
+    const [eg] = await db.select().from(egalizacija).where(eq(egalizacija.id, id));
+    if (!eg) return;
+    await db.delete(egalizacija).where(eq(egalizacija.id, id)); // cascade briše ulaze
+    if (eg.rezultatDestilatId) {
+      try {
+        await db.delete(destilati).where(eq(destilati.id, eg.rezultatDestilatId));
+      } catch {
+        // Destilat je u upotrebi (FK) — ostaje kao validan lot.
+      }
+    }
+  } catch (e) {
+    console.error("Greška pri storniranju egalizacije", e);
+    return;
+  }
+  revalidatePath("/proizvodnja/egalizacija");
+  revalidatePath("/proizvodnja/destilati");
 }

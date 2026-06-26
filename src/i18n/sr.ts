@@ -69,6 +69,7 @@ export const sr = {
     detalji: "Detalji",
     nazad: "Nazad",
     potvrdi: "Potvrdi",
+    storniraj: "Storniraj",
   },
 
   stanje: {
@@ -87,6 +88,8 @@ export const sr = {
     email: "Imejl",
     lozinka: "Lozinka",
     prijaviSe: "Prijavi se",
+    pogresnaLozinka: "Pogrešna lozinka.",
+    naslov: "Prijava na eDestilerija",
   },
 
   // Faza 1 — Šifarnici
@@ -331,6 +334,7 @@ export const sr = {
     neispravanDatum: "Unesite ispravan datum",
     greskaCuvanja: "Greška pri čuvanju. Pokušajte ponovo.",
     potvrdaBrisanja: "Da li sigurno želite da obrišete ovu stavku?",
+    potvrdaStorna: "Stornirati ovaj zapis? Nuspojave (zalihe/akciza) se vraćaju.",
     da: "Da",
     ne: "Ne",
     odaberi: "— Odaberi —",

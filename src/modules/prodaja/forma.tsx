@@ -21,7 +21,7 @@ export interface LotOpcija extends Opcija {
 }
 
 const inputKlase =
-  "w-full rounded-lg border border-neutral-300 px-3 py-2 text-sm focus:border-amber-500 focus:outline-none focus:ring-1 focus:ring-amber-500";
+  "w-full rounded-lg border border-neutral-300 px-3 py-2 text-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500";
 
 interface Red {
   proizvodId: string;
@@ -78,7 +78,7 @@ export function ProdajaForma({
     setRedovi((prev) => prev.map((r, idx) => (idx === i ? { ...r, [polje]: v } : r)));
 
   return (
-    <form key={verzija} action={formAction} className="space-y-4 rounded-xl border border-neutral-200 bg-white p-5">
+    <form key={verzija} action={formAction} className="space-y-4 rounded-2xl border border-neutral-200 bg-white p-5">
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
         <div>
           <label className="mb-1 block text-sm font-medium text-neutral-700">{sr.prodajaUI.broj}</label>
@@ -173,7 +173,7 @@ export function ProdajaForma({
         {stanje.greske?.stavke ? <p className="mt-1 text-xs text-red-600">{stanje.greske.stavke}</p> : null}
       </div>
 
-      <div className="flex flex-wrap items-center gap-x-6 gap-y-1 rounded-lg bg-amber-50 px-4 py-3 text-sm">
+      <div className="flex flex-wrap items-center gap-x-6 gap-y-1 rounded-lg bg-indigo-50 px-4 py-3 text-sm">
         <span className="text-neutral-600">
           {sr.prodajaUI.ukupnoCist}: <strong className="text-neutral-900">{litara(ukupnoCist)}</strong>
         </span>

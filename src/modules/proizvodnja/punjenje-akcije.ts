@@ -6,7 +6,7 @@
  *  - u BOCE (proizvod/SKU): evidentira broj napunjenih jedinica.
  * U oba slučaja upisuje ULAZ u `magacin_promet`. Sve u jednoj transakciji.
  */
-import { eq } from "drizzle-orm";
+import { and, eq } from "drizzle-orm";
 import { revalidatePath } from "next/cache";
 import { db } from "@/db";
 import { punjenje, sudovi, magacinPromet } from "@/db/schema/magacin";
@@ -100,4 +100,32 @@ export async function sacuvajPunjenje(
   revalidatePath("/proizvodnja/sudovi");
   revalidatePath("/magacin");
   return { ok: true };
+}
+
+/** Storno punjenja: briše punjenje, vraća magacin (briše ulaz) i umanjuje količinu suda. */
+export async function stornirajPunjenje(id: string): Promise<void> {
+  try {
+    await db.transaction(async (tx) => {
+      const [p] = await tx.select().from(punjenje).where(eq(punjenje.id, id));
+      if (!p) return;
+      if (p.sudId && p.kolicinaL) {
+        const [s] = await tx
+          .select({ k: sudovi.trenutnaKolicinaL })
+          .from(sudovi)
+          .where(eq(sudovi.id, p.sudId));
+        const nova = Math.max(0, Number(s?.k ?? 0) - Number(p.kolicinaL)).toFixed(3);
+        await tx.update(sudovi).set({ trenutnaKolicinaL: nova, updatedAt: new Date() }).where(eq(sudovi.id, p.sudId));
+      }
+      await tx
+        .delete(magacinPromet)
+        .where(and(eq(magacinPromet.referencaTip, "punjenje"), eq(magacinPromet.referencaId, id)));
+      await tx.delete(punjenje).where(eq(punjenje.id, id));
+    });
+  } catch (e) {
+    console.error("Greška pri storniranju punjenja", e);
+    return;
+  }
+  revalidatePath("/proizvodnja/punjenje");
+  revalidatePath("/proizvodnja/sudovi");
+  revalidatePath("/magacin");
 }

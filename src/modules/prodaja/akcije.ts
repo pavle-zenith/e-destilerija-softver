@@ -7,7 +7,7 @@
  *  - upiše IZLAZ u magacin_promet (umanjuje zalihe),
  *  - sračuna ukupan iznos i procenjenu akcizu po stopi važećoj na datum.
  */
-import { desc, eq, inArray, lte } from "drizzle-orm";
+import { and, desc, eq, inArray, lte } from "drizzle-orm";
 import { revalidatePath } from "next/cache";
 import { db } from "@/db";
 import { prodaja, prodajaStavke } from "@/db/schema/prodaja";
@@ -144,4 +144,22 @@ export async function sacuvajProdaju(
   revalidatePath("/magacin");
   revalidatePath("/akcize");
   return { ok: true };
+}
+
+/** Storno računa: briše račun (i stavke) i vraća zalihe (briše izlaze iz magacina). */
+export async function stornirajProdaju(id: string): Promise<void> {
+  try {
+    await db.transaction(async (tx) => {
+      await tx
+        .delete(magacinPromet)
+        .where(and(eq(magacinPromet.referencaTip, "prodaja"), eq(magacinPromet.referencaId, id)));
+      await tx.delete(prodaja).where(eq(prodaja.id, id)); // cascade briše stavke
+    });
+  } catch (e) {
+    console.error("Greška pri storniranju prodaje", e);
+    return;
+  }
+  revalidatePath("/prodaja");
+  revalidatePath("/magacin");
+  revalidatePath("/akcize");
 }

@@ -16,7 +16,7 @@ interface FormaProps {
 }
 
 const inputKlase =
-  "w-full rounded-lg border border-neutral-300 px-3 py-2 text-sm focus:border-amber-500 focus:outline-none focus:ring-1 focus:ring-amber-500";
+  "w-full rounded-lg border border-neutral-300 px-3 py-2 text-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500";
 
 function pocetnaVrednost(polje: Polje, stavka: Stavka | null): string {
   if (stavka && stavka[polje.ime] != null) {
@@ -52,7 +52,7 @@ export function EntitetForma({ meta, opcije, stavka, onUspeh, onOtkazi }: FormaP
                   type="checkbox"
                   name={polje.ime}
                   defaultChecked={stavka ? Boolean(stavka[polje.ime]) : Boolean(polje.podrazumevano)}
-                  className="h-4 w-4 rounded border-neutral-300 text-amber-700 focus:ring-amber-500"
+                  className="h-4 w-4 rounded border-neutral-300 text-indigo-600 focus:ring-indigo-500"
                 />
                 {polje.labela}
               </label>

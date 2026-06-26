@@ -16,7 +16,7 @@ export interface PodesavanjaVrednosti {
 }
 
 const inputKlase =
-  "w-full rounded-lg border border-neutral-300 px-3 py-2 text-sm focus:border-amber-500 focus:outline-none focus:ring-1 focus:ring-amber-500";
+  "w-full rounded-lg border border-neutral-300 px-3 py-2 text-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500";
 
 const { polja: P } = sr;
 
@@ -25,7 +25,7 @@ export function PodesavanjaForma({ vrednosti }: { vrednosti: PodesavanjaVrednost
 
   return (
     <form action={formAction} className="max-w-xl space-y-5">
-      <section className="rounded-xl border border-neutral-200 bg-white p-5">
+      <section className="rounded-2xl border border-neutral-200 bg-white p-5">
         <h2 className="mb-4 text-sm font-semibold uppercase tracking-wide text-neutral-500">
           Podaci o firmi
         </h2>
@@ -37,7 +37,7 @@ export function PodesavanjaForma({ vrednosti }: { vrednosti: PodesavanjaVrednost
         </div>
       </section>
 
-      <section className="rounded-xl border border-neutral-200 bg-white p-5">
+      <section className="rounded-2xl border border-neutral-200 bg-white p-5">
         <h2 className="mb-4 text-sm font-semibold uppercase tracking-wide text-neutral-500">
           {sr.nav.akcize}
         </h2>

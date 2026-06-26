@@ -74,7 +74,7 @@ export function EntitetTabela({ meta, opcije, podaci }: TabelaProps) {
         </Dugme>
       </div>
 
-      <div className="overflow-x-auto rounded-xl border border-neutral-200 bg-white">
+      <div className="overflow-x-auto rounded-2xl border border-neutral-200 bg-white">
         {podaci.length === 0 ? (
           <p className="px-4 py-12 text-center text-sm text-neutral-400">{sr.forma.nemaUnosa}</p>
         ) : (
@@ -132,7 +132,7 @@ export function EntitetTabela({ meta, opcije, podaci }: TabelaProps) {
           className="fixed inset-0 z-50 flex items-start justify-center overflow-y-auto bg-black/40 p-4 sm:items-center"
           onClick={zatvori}
         >
-          <div className="w-full max-w-lg rounded-xl bg-white p-6 shadow-xl" onClick={(e) => e.stopPropagation()}>
+          <div className="w-full max-w-lg rounded-2xl bg-white p-6 shadow-xl" onClick={(e) => e.stopPropagation()}>
             <div className="mb-4 flex items-center justify-between">
               <h2 className="text-lg font-semibold text-neutral-900">
                 {stavkaZaIzmenu ? sr.akcije.izmeni : meta.dodaj}
