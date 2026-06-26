@@ -1,0 +1,1843 @@
+{
+  "id": "c537f038-9252-40c9-995c-c2ecaca86e31",
+  "prevId": "00000000-0000-0000-0000-000000000000",
+  "version": "7",
+  "dialect": "postgresql",
+  "tables": {
+    "public.akciza_stopa": {
+      "name": "akciza_stopa",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true,
+          "default": "gen_random_uuid()"
+        },
+        "rsd_po_litru": {
+          "name": "rsd_po_litru",
+          "type": "numeric(12, 4)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "vazi_od": {
+          "name": "vazi_od",
+          "type": "date",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "napomena": {
+          "name": "napomena",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.dobavljaci": {
+      "name": "dobavljaci",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true,
+          "default": "gen_random_uuid()"
+        },
+        "naziv": {
+          "name": "naziv",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "pib": {
+          "name": "pib",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "maticni_broj": {
+          "name": "maticni_broj",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "adresa": {
+          "name": "adresa",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "telefon": {
+          "name": "telefon",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "email": {
+          "name": "email",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "napomena": {
+          "name": "napomena",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.enoloska_sredstva": {
+      "name": "enoloska_sredstva",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true,
+          "default": "gen_random_uuid()"
+        },
+        "naziv": {
+          "name": "naziv",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "jedinica": {
+          "name": "jedinica",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "napomena": {
+          "name": "napomena",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.kupci": {
+      "name": "kupci",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true,
+          "default": "gen_random_uuid()"
+        },
+        "naziv": {
+          "name": "naziv",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "pib": {
+          "name": "pib",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "maticni_broj": {
+          "name": "maticni_broj",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "adresa": {
+          "name": "adresa",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "telefon": {
+          "name": "telefon",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "email": {
+          "name": "email",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "napomena": {
+          "name": "napomena",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.podesavanja": {
+      "name": "podesavanja",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "integer",
+          "primaryKey": true,
+          "notNull": true,
+          "default": 1
+        },
+        "naziv_firme": {
+          "name": "naziv_firme",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "pib": {
+          "name": "pib",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "maticni_broj": {
+          "name": "maticni_broj",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "adresa": {
+          "name": "adresa",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "akciza_rok_dana": {
+          "name": "akciza_rok_dana",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "default": 15
+        },
+        "podsetnik_dana": {
+          "name": "podsetnik_dana",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "default": 3
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        }
+      },
+      "indexes": {
+        "podesavanja_singleton_idx": {
+          "name": "podesavanja_singleton_idx",
+          "columns": [
+            {
+              "expression": "id",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": true,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        }
+      },
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.proizvodi": {
+      "name": "proizvodi",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true,
+          "default": "gen_random_uuid()"
+        },
+        "naziv": {
+          "name": "naziv",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "vrsta_rakije_id": {
+          "name": "vrsta_rakije_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "zapremina_l": {
+          "name": "zapremina_l",
+          "type": "numeric(8, 3)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "jacina": {
+          "name": "jacina",
+          "type": "numeric(5, 2)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "barkod": {
+          "name": "barkod",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "prag_niskih_zaliha": {
+          "name": "prag_niskih_zaliha",
+          "type": "numeric(12, 3)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "aktivan": {
+          "name": "aktivan",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": true,
+          "default": true
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "proizvodi_vrsta_rakije_id_vrste_rakije_id_fk": {
+          "name": "proizvodi_vrsta_rakije_id_vrste_rakije_id_fk",
+          "tableFrom": "proizvodi",
+          "tableTo": "vrste_rakije",
+          "columnsFrom": [
+            "vrsta_rakije_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.vrste_rakije": {
+      "name": "vrste_rakije",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true,
+          "default": "gen_random_uuid()"
+        },
+        "naziv": {
+          "name": "naziv",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "napomena": {
+          "name": "napomena",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.destilati": {
+      "name": "destilati",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true,
+          "default": "gen_random_uuid()"
+        },
+        "oznaka": {
+          "name": "oznaka",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "partija_id": {
+          "name": "partija_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "vrsta_rakije_id": {
+          "name": "vrsta_rakije_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "kolicina_l": {
+          "name": "kolicina_l",
+          "type": "numeric(12, 3)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "jacina": {
+          "name": "jacina",
+          "type": "numeric(5, 2)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "cist_alkohol_l": {
+          "name": "cist_alkohol_l",
+          "type": "numeric(12, 3)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "datum": {
+          "name": "datum",
+          "type": "date",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "napomena": {
+          "name": "napomena",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "destilati_partija_id_proizvodne_partije_id_fk": {
+          "name": "destilati_partija_id_proizvodne_partije_id_fk",
+          "tableFrom": "destilati",
+          "tableTo": "proizvodne_partije",
+          "columnsFrom": [
+            "partija_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "destilati_vrsta_rakije_id_vrste_rakije_id_fk": {
+          "name": "destilati_vrsta_rakije_id_vrste_rakije_id_fk",
+          "tableFrom": "destilati",
+          "tableTo": "vrste_rakije",
+          "columnsFrom": [
+            "vrsta_rakije_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.egalizacija": {
+      "name": "egalizacija",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true,
+          "default": "gen_random_uuid()"
+        },
+        "oznaka": {
+          "name": "oznaka",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "rezultat_destilat_id": {
+          "name": "rezultat_destilat_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "datum": {
+          "name": "datum",
+          "type": "date",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "napomena": {
+          "name": "napomena",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "egalizacija_rezultat_destilat_id_destilati_id_fk": {
+          "name": "egalizacija_rezultat_destilat_id_destilati_id_fk",
+          "tableFrom": "egalizacija",
+          "tableTo": "destilati",
+          "columnsFrom": [
+            "rezultat_destilat_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.egalizacija_ulazi": {
+      "name": "egalizacija_ulazi",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true,
+          "default": "gen_random_uuid()"
+        },
+        "egalizacija_id": {
+          "name": "egalizacija_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "destilat_id": {
+          "name": "destilat_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "kolicina_l": {
+          "name": "kolicina_l",
+          "type": "numeric(12, 3)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "egalizacija_ulazi_egalizacija_id_egalizacija_id_fk": {
+          "name": "egalizacija_ulazi_egalizacija_id_egalizacija_id_fk",
+          "tableFrom": "egalizacija_ulazi",
+          "tableTo": "egalizacija",
+          "columnsFrom": [
+            "egalizacija_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        },
+        "egalizacija_ulazi_destilat_id_destilati_id_fk": {
+          "name": "egalizacija_ulazi_destilat_id_destilati_id_fk",
+          "tableFrom": "egalizacija_ulazi",
+          "tableTo": "destilati",
+          "columnsFrom": [
+            "destilat_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.proizvodne_partije": {
+      "name": "proizvodne_partije",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true,
+          "default": "gen_random_uuid()"
+        },
+        "oznaka": {
+          "name": "oznaka",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "sirovina_id": {
+          "name": "sirovina_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "vrsta_rakije_id": {
+          "name": "vrsta_rakije_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "datum_pocetka": {
+          "name": "datum_pocetka",
+          "type": "date",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "datum_kraja": {
+          "name": "datum_kraja",
+          "type": "date",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "prinos_l": {
+          "name": "prinos_l",
+          "type": "numeric(12, 3)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "jacina": {
+          "name": "jacina",
+          "type": "numeric(5, 2)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "haccp_napomene": {
+          "name": "haccp_napomene",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "napomena": {
+          "name": "napomena",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "proizvodne_partije_sirovina_id_sirovine_id_fk": {
+          "name": "proizvodne_partije_sirovina_id_sirovine_id_fk",
+          "tableFrom": "proizvodne_partije",
+          "tableTo": "sirovine",
+          "columnsFrom": [
+            "sirovina_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "proizvodne_partije_vrsta_rakije_id_vrste_rakije_id_fk": {
+          "name": "proizvodne_partije_vrsta_rakije_id_vrste_rakije_id_fk",
+          "tableFrom": "proizvodne_partije",
+          "tableTo": "vrste_rakije",
+          "columnsFrom": [
+            "vrsta_rakije_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.sirovine": {
+      "name": "sirovine",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true,
+          "default": "gen_random_uuid()"
+        },
+        "naziv": {
+          "name": "naziv",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "dobavljac_id": {
+          "name": "dobavljac_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "kolicina_kg": {
+          "name": "kolicina_kg",
+          "type": "numeric(12, 2)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "datum_prijema": {
+          "name": "datum_prijema",
+          "type": "date",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "napomena": {
+          "name": "napomena",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "sirovine_dobavljac_id_dobavljaci_id_fk": {
+          "name": "sirovine_dobavljac_id_dobavljaci_id_fk",
+          "tableFrom": "sirovine",
+          "tableTo": "dobavljaci",
+          "columnsFrom": [
+            "dobavljac_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.upotreba_sredstava": {
+      "name": "upotreba_sredstava",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true,
+          "default": "gen_random_uuid()"
+        },
+        "sredstvo_id": {
+          "name": "sredstvo_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "partija_id": {
+          "name": "partija_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "destilat_id": {
+          "name": "destilat_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "kolicina": {
+          "name": "kolicina",
+          "type": "numeric(12, 3)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "datum": {
+          "name": "datum",
+          "type": "date",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "napomena": {
+          "name": "napomena",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "upotreba_sredstava_sredstvo_id_enoloska_sredstva_id_fk": {
+          "name": "upotreba_sredstava_sredstvo_id_enoloska_sredstva_id_fk",
+          "tableFrom": "upotreba_sredstava",
+          "tableTo": "enoloska_sredstva",
+          "columnsFrom": [
+            "sredstvo_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "upotreba_sredstava_partija_id_proizvodne_partije_id_fk": {
+          "name": "upotreba_sredstava_partija_id_proizvodne_partije_id_fk",
+          "tableFrom": "upotreba_sredstava",
+          "tableTo": "proizvodne_partije",
+          "columnsFrom": [
+            "partija_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "upotreba_sredstava_destilat_id_destilati_id_fk": {
+          "name": "upotreba_sredstava_destilat_id_destilati_id_fk",
+          "tableFrom": "upotreba_sredstava",
+          "tableTo": "destilati",
+          "columnsFrom": [
+            "destilat_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.magacin_promet": {
+      "name": "magacin_promet",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true,
+          "default": "gen_random_uuid()"
+        },
+        "proizvod_id": {
+          "name": "proizvod_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "sud_id": {
+          "name": "sud_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "tip": {
+          "name": "tip",
+          "type": "tip_prometa",
+          "typeSchema": "public",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "kolicina": {
+          "name": "kolicina",
+          "type": "numeric(12, 3)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "referenca_tip": {
+          "name": "referenca_tip",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "referenca_id": {
+          "name": "referenca_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "datum": {
+          "name": "datum",
+          "type": "date",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "napomena": {
+          "name": "napomena",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "magacin_promet_proizvod_id_proizvodi_id_fk": {
+          "name": "magacin_promet_proizvod_id_proizvodi_id_fk",
+          "tableFrom": "magacin_promet",
+          "tableTo": "proizvodi",
+          "columnsFrom": [
+            "proizvod_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "magacin_promet_sud_id_sudovi_id_fk": {
+          "name": "magacin_promet_sud_id_sudovi_id_fk",
+          "tableFrom": "magacin_promet",
+          "tableTo": "sudovi",
+          "columnsFrom": [
+            "sud_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.punjenje": {
+      "name": "punjenje",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true,
+          "default": "gen_random_uuid()"
+        },
+        "destilat_id": {
+          "name": "destilat_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "sud_id": {
+          "name": "sud_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "proizvod_id": {
+          "name": "proizvod_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "kolicina_l": {
+          "name": "kolicina_l",
+          "type": "numeric(12, 3)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "broj_jedinica": {
+          "name": "broj_jedinica",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "datum": {
+          "name": "datum",
+          "type": "date",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "napomena": {
+          "name": "napomena",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "punjenje_destilat_id_destilati_id_fk": {
+          "name": "punjenje_destilat_id_destilati_id_fk",
+          "tableFrom": "punjenje",
+          "tableTo": "destilati",
+          "columnsFrom": [
+            "destilat_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "punjenje_sud_id_sudovi_id_fk": {
+          "name": "punjenje_sud_id_sudovi_id_fk",
+          "tableFrom": "punjenje",
+          "tableTo": "sudovi",
+          "columnsFrom": [
+            "sud_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "punjenje_proizvod_id_proizvodi_id_fk": {
+          "name": "punjenje_proizvod_id_proizvodi_id_fk",
+          "tableFrom": "punjenje",
+          "tableTo": "proizvodi",
+          "columnsFrom": [
+            "proizvod_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.sudovi": {
+      "name": "sudovi",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true,
+          "default": "gen_random_uuid()"
+        },
+        "oznaka": {
+          "name": "oznaka",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "tip": {
+          "name": "tip",
+          "type": "tip_suda",
+          "typeSchema": "public",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "'bure'"
+        },
+        "kapacitet_l": {
+          "name": "kapacitet_l",
+          "type": "numeric(12, 3)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "trenutna_kolicina_l": {
+          "name": "trenutna_kolicina_l",
+          "type": "numeric(12, 3)",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "'0'"
+        },
+        "destilat_id": {
+          "name": "destilat_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "qr_kod": {
+          "name": "qr_kod",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "lokacija": {
+          "name": "lokacija",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "napomena": {
+          "name": "napomena",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "sudovi_destilat_id_destilati_id_fk": {
+          "name": "sudovi_destilat_id_destilati_id_fk",
+          "tableFrom": "sudovi",
+          "tableTo": "destilati",
+          "columnsFrom": [
+            "destilat_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {
+        "sudovi_qr_kod_unique": {
+          "name": "sudovi_qr_kod_unique",
+          "nullsNotDistinct": false,
+          "columns": [
+            "qr_kod"
+          ]
+        }
+      },
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.prodaja": {
+      "name": "prodaja",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true,
+          "default": "gen_random_uuid()"
+        },
+        "broj": {
+          "name": "broj",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "kupac_id": {
+          "name": "kupac_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "datum": {
+          "name": "datum",
+          "type": "date",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "ukupno_bez_akcize": {
+          "name": "ukupno_bez_akcize",
+          "type": "numeric(14, 2)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "ukupno_akciza": {
+          "name": "ukupno_akciza",
+          "type": "numeric(14, 2)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "napomena": {
+          "name": "napomena",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "prodaja_kupac_id_kupci_id_fk": {
+          "name": "prodaja_kupac_id_kupci_id_fk",
+          "tableFrom": "prodaja",
+          "tableTo": "kupci",
+          "columnsFrom": [
+            "kupac_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.prodaja_stavke": {
+      "name": "prodaja_stavke",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true,
+          "default": "gen_random_uuid()"
+        },
+        "prodaja_id": {
+          "name": "prodaja_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "proizvod_id": {
+          "name": "proizvod_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "kolicina": {
+          "name": "kolicina",
+          "type": "numeric(12, 3)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "zapremina_l": {
+          "name": "zapremina_l",
+          "type": "numeric(8, 3)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "jacina": {
+          "name": "jacina",
+          "type": "numeric(5, 2)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "cist_alkohol_l": {
+          "name": "cist_alkohol_l",
+          "type": "numeric(12, 3)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "cena_jedinice": {
+          "name": "cena_jedinice",
+          "type": "numeric(14, 2)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "prodaja_stavke_prodaja_id_prodaja_id_fk": {
+          "name": "prodaja_stavke_prodaja_id_prodaja_id_fk",
+          "tableFrom": "prodaja_stavke",
+          "tableTo": "prodaja",
+          "columnsFrom": [
+            "prodaja_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        },
+        "prodaja_stavke_proizvod_id_proizvodi_id_fk": {
+          "name": "prodaja_stavke_proizvod_id_proizvodi_id_fk",
+          "tableFrom": "prodaja_stavke",
+          "tableTo": "proizvodi",
+          "columnsFrom": [
+            "proizvod_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.akciza_obracun": {
+      "name": "akciza_obracun",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true,
+          "default": "gen_random_uuid()"
+        },
+        "godina": {
+          "name": "godina",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "mesec": {
+          "name": "mesec",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "deo": {
+          "name": "deo",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "period_od": {
+          "name": "period_od",
+          "type": "date",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "period_do": {
+          "name": "period_do",
+          "type": "date",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "litara_cistog_alkohola": {
+          "name": "litara_cistog_alkohola",
+          "type": "numeric(14, 3)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "stopa": {
+          "name": "stopa",
+          "type": "numeric(12, 4)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "iznos": {
+          "name": "iznos",
+          "type": "numeric(14, 2)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "rok": {
+          "name": "rok",
+          "type": "date",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "status": {
+          "name": "status",
+          "type": "status_akcize",
+          "typeSchema": "public",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "'obracunato'"
+        },
+        "datum_placanja": {
+          "name": "datum_placanja",
+          "type": "date",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "napomena": {
+          "name": "napomena",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        }
+      },
+      "indexes": {
+        "akciza_period_idx": {
+          "name": "akciza_period_idx",
+          "columns": [
+            {
+              "expression": "godina",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            },
+            {
+              "expression": "mesec",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            },
+            {
+              "expression": "deo",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": true,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        }
+      },
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.obavestenja": {
+      "name": "obavestenja",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true,
+          "default": "gen_random_uuid()"
+        },
+        "tip": {
+          "name": "tip",
+          "type": "tip_obavestenja",
+          "typeSchema": "public",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "naslov": {
+          "name": "naslov",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "poruka": {
+          "name": "poruka",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "rok": {
+          "name": "rok",
+          "type": "date",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "status": {
+          "name": "status",
+          "type": "status_obavestenja",
+          "typeSchema": "public",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "'novo'"
+        },
+        "referenca_tip": {
+          "name": "referenca_tip",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "referenca_id": {
+          "name": "referenca_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    }
+  },
+  "enums": {
+    "public.status_akcize": {
+      "name": "status_akcize",
+      "schema": "public",
+      "values": [
+        "obracunato",
+        "placeno"
+      ]
+    },
+    "public.status_obavestenja": {
+      "name": "status_obavestenja",
+      "schema": "public",
+      "values": [
+        "novo",
+        "procitano",
+        "reseno"
+      ]
+    },
+    "public.tip_obavestenja": {
+      "name": "tip_obavestenja",
+      "schema": "public",
+      "values": [
+        "akciza_rok",
+        "niske_zalihe",
+        "sistem"
+      ]
+    },
+    "public.tip_prometa": {
+      "name": "tip_prometa",
+      "schema": "public",
+      "values": [
+        "ulaz",
+        "izlaz"
+      ]
+    },
+    "public.tip_suda": {
+      "name": "tip_suda",
+      "schema": "public",
+      "values": [
+        "bure",
+        "tank",
+        "cisterna",
+        "balon"
+      ]
+    }
+  },
+  "schemas": {},
+  "sequences": {},
+  "roles": {},
+  "policies": {},
+  "views": {},
+  "_meta": {
+    "columns": {},
+    "schemas": {},
+    "tables": {}
+  }
+}
