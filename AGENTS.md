@@ -54,10 +54,12 @@ Tajne idu u `.env.local` (vidi `.env.example`). Bez `DATABASE_URL` baza ne radi.
 ## Konvencije
 - Drizzle `numeric` vraća **string** — koristi formatере iz `src/i18n/format.ts` za prikaz.
 - Novi modul = nova rута u `src/app/`, stavka u `navStavke`, folder u `src/modules/`, stringovi u `sr.ts`.
+- Stranice koje čitaju iz baze nose `export const dynamic = "force-dynamic"` (build okruženje ne dohvata bazu, pa nema statičkog prerendera).
+- **Šifarnici su descriptor-driven:** metapodaci polja u `src/modules/sifarnici/polja.ts` (klijentski-bezbedno, gradi i zod), Drizzle tabele u `registar.ts` (`server-only`), generičke akcije u `akcije.ts`, upiti u `podaci.ts`. Nov šifarnik = unos u `RESURSI` + `TABELE` (+ `IZVORI_OPCIJA` za FK); ruta `/sifarnici/[resurs]`, forma i tabela rade automatski.
 
 ## Status faza
 - [x] **Faza 0 — Temelj:** skeleton, šema, i18n, app shell, PWA, domenska logika, cron stub.
-- [ ] **Faza 1 — Šifarnici:** CRUD (proizvodi, kupci, dobavljači, vrste rakije, sredstva, akcizna stopa, podešavanja).
+- [x] **Faza 1 — Šifarnici:** descriptor-driven CRUD (proizvodi, kupci, dobavljači, vrste rakije, sredstva, akcizna stopa) + singleton podešavanja.
 - [ ] **Faza 2 — Proizvodnja & Sledljivost:** partije, egalizacija, punjenje, istorija lota, QR nalepnice.
 - [ ] **Faza 3 — Magacin:** stanje iz prometa, alarmi za niske zalihe.
 - [ ] **Faza 4 — Prodaja & Akcize:** prodaja → zalihe → obračun akcize → podsetnici (cron).

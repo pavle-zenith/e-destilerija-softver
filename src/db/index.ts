@@ -2,11 +2,13 @@ import { drizzle } from "drizzle-orm/postgres-js";
 import postgres from "postgres";
 import * as schema from "./schema";
 
-const connectionString = process.env.DATABASE_URL;
+// `DATABASE_URL` je naša konvencija (.env.local); `POSTGRES_URL` postavlja
+// Supabase↔Vercel integracija u produkciji. Prihvatamo oba.
+const connectionString = process.env.DATABASE_URL ?? process.env.POSTGRES_URL;
 
 if (!connectionString) {
   throw new Error(
-    "DATABASE_URL nije postavljen. Kopirajte .env.example u .env.local i unesite Supabase konekcioni string.",
+    "DATABASE_URL (ili POSTGRES_URL) nije postavljen. Kopirajte .env.example u .env.local i unesite Supabase konekcioni string.",
   );
 }
 

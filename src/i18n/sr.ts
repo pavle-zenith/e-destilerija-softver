@@ -88,6 +88,80 @@ export const sr = {
     lozinka: "Lozinka",
     prijaviSe: "Prijavi se",
   },
+
+  // Faza 1 — Šifarnici
+  sifarnici: {
+    opis: "Matični podaci: proizvodi, kupci, dobavljači, vrste rakije, enološka sredstva i akcizna stopa",
+    // Naslovi i opisi po resursu (množina, jednina za dugmad, opis za karticu)
+    resursi: {
+      proizvodi: {
+        mn: "Proizvodi",
+        dodaj: "Novi proizvod",
+        opis: "Prodajni proizvodi (SKU) — pakovanje, zapremina i jačina",
+      },
+      kupci: {
+        mn: "Kupci",
+        dodaj: "Novi kupac",
+        opis: "Pravna i fizička lica kojima se prodaje",
+      },
+      dobavljaci: {
+        mn: "Dobavljači",
+        dodaj: "Novi dobavljač",
+        opis: "Dobavljači sirovina i materijala",
+      },
+      "vrste-rakije": {
+        mn: "Vrste rakije",
+        dodaj: "Nova vrsta rakije",
+        opis: "Npr. šljivovica, kajsijevača, lozovača",
+      },
+      sredstva: {
+        mn: "Enološka sredstva",
+        dodaj: "Novo sredstvo",
+        opis: "Šifarnik enoloških sredstava i jedinica mere",
+      },
+      "akcizna-stopa": {
+        mn: "Akcizna stopa",
+        dodaj: "Nova stopa",
+        opis: "Iznos akcize po litru čistog alkohola, verzionisan po datumu",
+      },
+    },
+  },
+
+  // Nazivi polja (zajednički rečnik za forme i tabele)
+  polja: {
+    naziv: "Naziv",
+    pib: "PIB",
+    maticniBroj: "Matični broj",
+    adresa: "Adresa",
+    telefon: "Telefon",
+    email: "Imejl",
+    napomena: "Napomena",
+    vrstaRakije: "Vrsta rakije",
+    zapreminaL: "Zapremina (L)",
+    jacina: "Jačina (% vol)",
+    barkod: "Barkod",
+    pragNiskihZaliha: "Prag niskih zaliha (jed.)",
+    aktivan: "Aktivan",
+    jedinica: "Jedinica mere",
+    rsdPoLitru: "RSD po litru čistog alkohola",
+    vaziOd: "Važi od",
+    // Podešavanja
+    nazivFirme: "Naziv firme",
+    akcizaRokDana: "Rok plaćanja akcize (dana posle perioda)",
+    podsetnikDana: "Podsetnik koliko dana pre roka",
+  },
+
+  forma: {
+    obavezno: "Obavezno polje",
+    neispravanBroj: "Unesite ispravan broj",
+    neispravanDatum: "Unesite ispravan datum",
+    greskaCuvanja: "Greška pri čuvanju. Pokušajte ponovo.",
+    potvrdaBrisanja: "Da li sigurno želite da obrišete ovu stavku?",
+    da: "Da",
+    ne: "Ne",
+    odaberi: "— Odaberi —",
+    nemaUnosa: "Još nema unosa. Kliknite na dugme da dodate prvi.",
+  },
 } as const;
 
 export type Recnik = typeof sr;
