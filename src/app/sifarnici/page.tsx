@@ -2,14 +2,14 @@ import Link from "next/link";
 import { ChevronRight } from "lucide-react";
 import { PageHeader } from "@/components/page-header";
 import { sr } from "@/i18n/sr";
-import { RESURSI } from "@/modules/sifarnici/polja";
+import { entitetiZaPutanju } from "@/modules/crud/entiteti";
 
 export default function SifarniciStranica() {
   return (
     <div>
       <PageHeader naslov={sr.nav.sifarnici} opis={sr.sifarnici.opis} />
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-        {Object.values(RESURSI).map((meta) => (
+        {entitetiZaPutanju("/sifarnici").map((meta) => (
           <Link
             key={meta.kljuc}
             href={`/sifarnici/${meta.kljuc}`}

@@ -9,7 +9,7 @@ import { revalidatePath } from "next/cache";
 import { db } from "@/db";
 import { podesavanja } from "@/db/schema";
 import { sr } from "@/i18n/sr";
-import type { StanjeForme } from "@/modules/sifarnici/polja";
+import type { StanjeForme } from "@/modules/crud/tipovi";
 
 const prazanUNull = (v: unknown) =>
   typeof v === "string" && v.trim() === "" ? null : v;

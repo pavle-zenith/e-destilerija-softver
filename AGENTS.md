@@ -55,7 +55,11 @@ Tajne idu u `.env.local` (vidi `.env.example`). Bez `DATABASE_URL` baza ne radi.
 - Drizzle `numeric` vraća **string** — koristi formatере iz `src/i18n/format.ts` za prikaz.
 - Novi modul = nova rута u `src/app/`, stavka u `navStavke`, folder u `src/modules/`, stringovi u `sr.ts`.
 - Stranice koje čitaju iz baze nose `export const dynamic = "force-dynamic"` (build okruženje ne dohvata bazu, pa nema statičkog prerendera).
-- **Šifarnici su descriptor-driven:** metapodaci polja u `src/modules/sifarnici/polja.ts` (klijentski-bezbedno, gradi i zod), Drizzle tabele u `registar.ts` (`server-only`), generičke akcije u `akcije.ts`, upiti u `podaci.ts`. Nov šifarnik = unos u `RESURSI` + `TABELE` (+ `IZVORI_OPCIJA` za FK); ruta `/sifarnici/[resurs]`, forma i tabela rade automatski.
+- **Generički CRUD engine je `src/modules/crud/`** (koristi ga i Šifarnici i Proizvodnja, kasnije i ostale faze):
+  - `tipovi.ts` — tipovi polja + zod (klijentski-bezbedno). `entiteti.ts` — `ENTITETI` registar metapodataka, svaki ima `osnovnaPutanja` (npr. `/sifarnici`, `/proizvodnja`).
+  - `registar.ts` (`server-only`) — `TABELE` (Drizzle), `IZVORI_OPCIJA` (FK liste + kolona labele), `IZRACUNAJ` (izvedena polja: npr. `cistAlkoholL`, `qrKod`).
+  - `akcije.ts` generičke `sacuvaj`/`obrisi`; `podaci.ts` `ucitajListu`/`ucitajOpcije`; `forma.tsx`/`tabela.tsx` generički UI.
+  - Nov entitet = unos u `ENTITETI` + `TABELE` (+ `IZVORI_OPCIJA`/`IZRACUNAJ` po potrebi); dinamička ruta `/<sekcija>/[param]` + index sa `entitetiZaPutanju()` rade automatski.
 
 ## Status faza
 - [x] **Faza 0 — Temelj:** skeleton, šema, i18n, app shell, PWA, domenska logika, cron stub.

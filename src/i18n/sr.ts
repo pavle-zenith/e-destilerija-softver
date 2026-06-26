@@ -145,10 +145,61 @@ export const sr = {
     jedinica: "Jedinica mere",
     rsdPoLitru: "RSD po litru čistog alkohola",
     vaziOd: "Važi od",
+    // Proizvodnja
+    oznaka: "Oznaka",
+    dobavljac: "Dobavljač",
+    kolicinaKg: "Količina (kg)",
+    datumPrijema: "Datum prijema",
+    sirovina: "Sirovina",
+    datumPocetka: "Datum početka",
+    datumKraja: "Datum kraja",
+    prinosL: "Prinos (L)",
+    haccpNapomene: "HACCP napomene",
+    partija: "Partija",
+    kolicinaL: "Količina (L)",
+    datum: "Datum",
+    tipSuda: "Tip suda",
+    kapacitetL: "Kapacitet (L)",
+    destilat: "Destilat",
+    lokacija: "Lokacija",
     // Podešavanja
     nazivFirme: "Naziv firme",
     akcizaRokDana: "Rok plaćanja akcize (dana posle perioda)",
     podsetnikDana: "Podsetnik koliko dana pre roka",
+  },
+
+  // Faza 2 — Proizvodnja
+  proizvodnja: {
+    opis: "Prijem sirovina, proizvodne partije, destilati i sudovi za skladištenje",
+    entiteti: {
+      sirovine: {
+        mn: "Sirovine",
+        dodaj: "Nov prijem sirovine",
+        opis: "Prijem voća i drugih sirovina od dobavljača",
+      },
+      partije: {
+        mn: "Proizvodne partije",
+        dodaj: "Nova partija",
+        opis: "Fermentacija i destilacija — HACCP evidencija",
+      },
+      destilati: {
+        mn: "Destilati",
+        dodaj: "Nov destilat",
+        opis: "Lotovi gotovog destilata (čist alkohol se računa automatski)",
+      },
+      sudovi: {
+        mn: "Sudovi",
+        dodaj: "Nov sud",
+        opis: "Burad, tankovi i cisterne — svaki nosi jedinstveni QR kod",
+      },
+    },
+  },
+
+  tipSuda: {
+    bure: "Bure",
+    tank: "Tank",
+    cisterna: "Cisterna",
+    balon: "Balon",
   },
 
   forma: {

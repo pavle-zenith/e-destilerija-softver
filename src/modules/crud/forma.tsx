@@ -4,10 +4,10 @@ import { useActionState, useEffect } from "react";
 import { sr } from "@/i18n/sr";
 import { Dugme } from "@/components/ui/dugme";
 import { sacuvaj } from "./akcije";
-import type { Opcije, Polje, ResursMeta, Stavka } from "./polja";
+import type { EntitetMeta, Opcije, Polje, Stavka } from "./tipovi";
 
 interface FormaProps {
-  meta: ResursMeta;
+  meta: EntitetMeta;
   opcije: Opcije;
   /** Stavka koja se menja, ili null za novi unos. */
   stavka: Stavka | null;
@@ -18,17 +18,17 @@ interface FormaProps {
 const inputKlase =
   "w-full rounded-lg border border-neutral-300 px-3 py-2 text-sm focus:border-amber-500 focus:outline-none focus:ring-1 focus:ring-amber-500";
 
-/** Vraća podrazumevanu vrednost polja za kontrolisani/nekontrolisani input. */
 function pocetnaVrednost(polje: Polje, stavka: Stavka | null): string {
   if (stavka && stavka[polje.ime] != null) {
     const v = stavka[polje.ime];
     if (polje.tip === "datum") return String(v).slice(0, 10);
     return String(v);
   }
+  if (typeof polje.podrazumevano === "string") return polje.podrazumevano;
   return "";
 }
 
-export function SifarnikForma({ meta, opcije, stavka, onUspeh, onOtkazi }: FormaProps) {
+export function EntitetForma({ meta, opcije, stavka, onUspeh, onOtkazi }: FormaProps) {
   const akcija = sacuvaj.bind(null, meta.kljuc);
   const [stanje, formAction, pending] = useActionState(akcija, { ok: false });
 
@@ -51,9 +51,7 @@ export function SifarnikForma({ meta, opcije, stavka, onUspeh, onOtkazi }: Forma
                   id={idPolja}
                   type="checkbox"
                   name={polje.ime}
-                  defaultChecked={
-                    stavka ? Boolean(stavka[polje.ime]) : Boolean(polje.podrazumevano)
-                  }
+                  defaultChecked={stavka ? Boolean(stavka[polje.ime]) : Boolean(polje.podrazumevano)}
                   className="h-4 w-4 rounded border-neutral-300 text-amber-700 focus:ring-amber-500"
                 />
                 {polje.labela}
@@ -64,12 +62,7 @@ export function SifarnikForma({ meta, opcije, stavka, onUspeh, onOtkazi }: Forma
                   {polje.labela}
                   {polje.obavezno ? <span className="text-red-500"> *</span> : null}
                 </label>
-                <Polje
-                  id={idPolja}
-                  polje={polje}
-                  opcije={opcije}
-                  pocetna={pocetnaVrednost(polje, stavka)}
-                />
+                <Polje id={idPolja} polje={polje} opcije={opcije} pocetna={pocetnaVrednost(polje, stavka)} />
               </>
             )}
             {greska ? <p className="mt-1 text-xs text-red-600">{greska}</p> : null}
@@ -105,13 +98,11 @@ function Polje({
   pocetna: string;
 }) {
   if (polje.tip === "textarea") {
-    return (
-      <textarea id={id} name={polje.ime} defaultValue={pocetna} rows={3} className={inputKlase} />
-    );
+    return <textarea id={id} name={polje.ime} defaultValue={pocetna} rows={3} className={inputKlase} />;
   }
 
   if (polje.tip === "izbor") {
-    const lista = (polje.opcije && opcije[polje.opcije]) || [];
+    const lista = polje.opcijeStatic ?? (polje.opcije ? opcije[polje.opcije] : undefined) ?? [];
     return (
       <select id={id} name={polje.ime} defaultValue={pocetna} className={inputKlase}>
         <option value="">{sr.forma.odaberi}</option>
@@ -125,7 +116,6 @@ function Polje({
   }
 
   const tipInputa = polje.tip === "datum" ? "date" : "text";
-  // Brojevi: inputmode decimal, ali tip text radi konzistentnog parsiranja (zarez/tačka).
   return (
     <input
       id={id}

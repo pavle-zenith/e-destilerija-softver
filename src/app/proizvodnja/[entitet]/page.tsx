@@ -10,25 +10,25 @@ import { EntitetTabela } from "@/modules/crud/tabela";
 // Podaci iz baze se čitaju po zahtevu — bez statičkog prerendera na build-u.
 export const dynamic = "force-dynamic";
 
-export default async function ResursStranica({
+export default async function EntitetStranica({
   params,
 }: {
-  params: Promise<{ resurs: string }>;
+  params: Promise<{ entitet: string }>;
 }) {
-  const { resurs } = await params;
-  const meta = pronadjiEntitet(resurs, "/sifarnici");
+  const { entitet } = await params;
+  const meta = pronadjiEntitet(entitet, "/proizvodnja");
   if (!meta) notFound();
 
-  const [podaci, opcije] = await Promise.all([ucitajListu(resurs), ucitajOpcije(resurs)]);
+  const [podaci, opcije] = await Promise.all([ucitajListu(entitet), ucitajOpcije(entitet)]);
 
   return (
     <div>
       <Link
-        href="/sifarnici"
+        href="/proizvodnja"
         className="mb-3 inline-flex items-center gap-1 text-sm text-neutral-500 hover:text-amber-700"
       >
         <ChevronLeft className="h-4 w-4" />
-        {sr.nav.sifarnici}
+        {sr.nav.proizvodnja}
       </Link>
       <PageHeader naslov={meta.mn} opis={meta.opis} />
       <EntitetTabela meta={meta} opcije={opcije} podaci={podaci} />
