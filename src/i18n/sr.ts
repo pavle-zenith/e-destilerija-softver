@@ -252,6 +252,7 @@ export const sr = {
 
   akcizeUI: {
     obracunaj: "Obračunaj period",
+    preracunaj: "Preračunaj",
     oznaciPlaceno: "Označi kao plaćeno",
     nemaObracuna: "Još nema obračuna. Periodi sa prodajom su dole.",
     periodi: "Periodi sa prodajom",

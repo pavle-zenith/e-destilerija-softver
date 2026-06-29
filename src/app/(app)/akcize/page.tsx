@@ -81,8 +81,13 @@ export default async function AkcizeStranica() {
                         ) : null}
                         {!placeno ? (
                           <form action={obracunajPeriod.bind(null, p.godina, p.mesec, p.deo)}>
-                            <Dugme type="submit" velicina="sm" varijanta={p.obracun ? "sporedno" : "primarno"}>
-                              {sr.akcizeUI.obracunaj}
+                            <Dugme
+                              type="submit"
+                              velicina="sm"
+                              varijanta={p.obracun ? "sporedno" : "primarno"}
+                              title={p.obracun ? "Osveži iznos ako su se punjenja promenila" : "Napravi zvanični obračun za period"}
+                            >
+                              {p.obracun ? sr.akcizeUI.preracunaj : sr.akcizeUI.obracunaj}
                             </Dugme>
                           </form>
                         ) : null}
